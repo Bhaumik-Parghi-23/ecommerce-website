@@ -1,0 +1,35 @@
+const Product = require('../models/productModel');
+const products = [
+    { name: "Laptop", price: 80000},
+    { name: "Headphones", price: 2000}
+]
+
+const getProducts = async(req, res) => {
+    try{
+        const products = await Product.find();
+        res.json(products);
+    }catch(err){
+        res.status(500).json({message:err.message});
+    }
+}
+
+const addProduct = async(req, res) => {
+    try{
+        const newProduct = new Product(req.body);
+        const saved = await newProduct.save();
+        res.status(201).json(saved);
+    }catch(err){
+        res.status(400).json({message:err.message});
+    }
+}
+
+const deleteProduct = async(req, res) => {
+    try{
+        await Product.findByIdAndDelete(req.params.id);
+        res.json({message:"Product deleted"});
+    }catch(err){
+        res.status(500).json({message:err.message});
+    }
+} 
+
+module.exports = {getProducts, addProduct, deleteProduct};
