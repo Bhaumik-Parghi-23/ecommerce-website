@@ -208,7 +208,7 @@ body{
 }
 
 .category-card:hover{
-    background: #ff6b6b;
+    background:  #ff2c2c;
     color: white;
     transform: translateY(-5px);
 }
@@ -223,6 +223,7 @@ body{
 .product-grid{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* grid-template-columns: 1fr; single column */
     gap: 25px;
     margin-top: 20px;
 }
