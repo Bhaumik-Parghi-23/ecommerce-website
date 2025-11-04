@@ -316,6 +316,7 @@ body{
     color: #333;
     font-size: 0.9rem;
     transition: 0.3s;
+    padding: 8px;
 }
 
 .footer-links a:hover{
