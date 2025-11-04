@@ -6,7 +6,8 @@ const productSchema = new mongoose.Schema({
     image: {type:String}, // image url
     description: {type:String},
     stock: {type:Number, default: 0},
-    category: {type:String}
+    category: {type:String},
+    featured: {type:Boolean, default: false} // by default, product is not featured
 }, {timestamps:true});
 
 const Product = mongoose.model('Product', productSchema);

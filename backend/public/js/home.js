@@ -1,7 +1,7 @@
 // Fetching products from backend and displaying them on the home page
-async function fetchProducts() {
+async function fetchFeaturedProducts() {
     try{
-        const response = await fetch('/api/products'); // Backend API
+        const response = await fetch('/api/products/featured'); // Backend API
         const products = await response.json();
 
         const productContainer = document.getElementById('product-list');
@@ -23,4 +23,4 @@ async function fetchProducts() {
 }
 
 // Calling the API
-window.addEventListener('DOMContentLoaded', fetchProducts);
+window.addEventListener('DOMContentLoaded', fetchFeaturedProducts);

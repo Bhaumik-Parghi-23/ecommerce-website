@@ -1,8 +1,8 @@
 const Product = require('../models/productModel');
-const products = [
-    { name: "Laptop", price: 80000},
-    { name: "Headphones", price: 2000}
-]
+// const products = [
+//     { name: "Laptop", price: 80000},
+//     { name: "Headphones", price: 2000}
+// ]
 
 const getProducts = async(req, res) => {
     try{
@@ -10,6 +10,15 @@ const getProducts = async(req, res) => {
         res.json(products);
     }catch(err){
         res.status(500).json({message:err.message});
+    }
+}
+
+const getFeaturedProducts = async(req, res) => {
+    try{
+        const featuredProducts = await Product.find({featured:true}).limit(10);
+        res.json(featuredProducts);
+    }catch(err){
+        res.status(500).json({message: err.message});
     }
 }
 
@@ -32,4 +41,4 @@ const deleteProduct = async(req, res) => {
     }
 } 
 
-module.exports = {getProducts, addProduct, deleteProduct};
+module.exports = {getProducts, addProduct, deleteProduct, getFeaturedProducts};
