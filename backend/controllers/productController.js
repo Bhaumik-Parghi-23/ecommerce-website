@@ -4,6 +4,7 @@ const Product = require('../models/productModel');
 //     { name: "Headphones", price: 2000}
 // ]
 
+// Get all products
 const getProducts = async(req, res) => {
     try{
         const products = await Product.find();
@@ -13,10 +14,21 @@ const getProducts = async(req, res) => {
     }
 }
 
+// Get featured products
 const getFeaturedProducts = async(req, res) => {
     try{
         const featuredProducts = await Product.find({featured:true}).limit(10);
         res.json(featuredProducts);
+    }catch(err){
+        res.status(500).json({message: err.message});
+    }
+}
+
+// Get electronic products
+const  getElectronicProducts = async(req, res) => {
+    try{
+        const products = await Product.find({category : 'Electronics'});
+        res.json(products);
     }catch(err){
         res.status(500).json({message: err.message});
     }
@@ -41,4 +53,4 @@ const deleteProduct = async(req, res) => {
     }
 } 
 
-module.exports = {getProducts, addProduct, deleteProduct, getFeaturedProducts};
+module.exports = {getProducts, addProduct, deleteProduct, getFeaturedProducts, getElectronicProducts};

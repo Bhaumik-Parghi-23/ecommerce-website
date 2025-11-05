@@ -22,5 +22,10 @@ async function fetchFeaturedProducts() {
     }
 }
 
+// Electronic Category  
+document.getElementById('electronics-category').addEventListener('click', () => {
+    window.location.href="electronics.html";
+});
+
 // Calling the API
 window.addEventListener('DOMContentLoaded', fetchFeaturedProducts);
