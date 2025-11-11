@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('product-list');
     container.innerHTML = "";
     try {
-        const res = await fetch('/api/products/home');
+        const res = await fetch('/api/products/games');
         const products = await res.json();
 
         container.innerHTML = products.map(product => `
